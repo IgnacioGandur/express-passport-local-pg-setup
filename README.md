@@ -130,5 +130,6 @@ the index page and able to see the following message:
 > - Delete the `.git` file (if present) and create your own with `git init`.
 > - Change the repository name to your project's name.
 > - Replace the content of the `README.md` file with your project's description.
+> - Change the content of the `package.json` file with your project's info.
 
 ## 💫 Start Working On Your Project
