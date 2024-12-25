@@ -1,6 +1,8 @@
-# Set Up An Express App With Passport Local Strategy And A PostgresQL Database
+# Express + Passport.js Local Strategy + PostgresQL Database
 
 ## 🛠️ Prerequisites
+
+Have the following packages installed in your machine:
 
 - Nodejs
 - Npm
@@ -10,21 +12,24 @@
 ## 🐘 Start The PostgresQL Service
 
 ```bash
-sudo systemctl start postgresql # Command to start the service in Arch. (Find the one for your OS.)
+sudo systemctl start postgresql
 ```
+
+> [!NOTE]
+> The above command is for Arch, find the one for your OS.
 
 ## 📁 Set Up The Repo
 
 Clone this repo:
 
 ```bash
-git clone git@github.com:IgnacioGandur/set-up-passport-local.git
+git clone git@github.com:IgnacioGandur/express-passport-local-pg-setup.git
 ```
 
 Cd into the repo:
 
 ```bash
-cd set-up-passport-local/
+cd express-passport-local-pg-setup/
 ```
 
 Install the needed packages from the `package.json` file:
@@ -33,7 +38,7 @@ Install the needed packages from the `package.json` file:
 npm install
 ```
 
-## Set Up The Database And Tables For Your Project
+## 💾 Setting Up The PostgresQL Database
 
 (I will use the `psql` CLI)
 
@@ -56,16 +61,25 @@ Connect to your newly created database:
 
 ```
 
-Within the `psql` CLI run the meta-command to create the "users"
-table from the `createUsersTable.sql` file (or create your own table):
+> [!NOTE]
+> The `\c` meta-command is used to connect to a PostgresQL database.
+
+Once connected to your project's DB, use the `\i` meta-command  
+to create the "users" table from the `createUsersTable.sql` file
+
+> [!TIP]
+> The "users" table only starts with the "username" and "password" columns.
+> You can modify the `createUsersTable.sql` file now to adjust the  
+> "users" table to your project's needs before running this command.
+> You can also modify the table later, depends on you.
 
 ```bash
-\i ./db/createUsersTable.sql # The "\i" meta-command it's used to run an SQL command from a file.
-
+\i ./db/createUsersTable.sql
 ```
 
-The "users" table only starts with a "username" and "password" columns.
-(You can modify it later accordingly to your app's needs)
+> [!NOTE]
+> The `\i` meta-command it's used to run an SQL command from a file.  
+> It takes the file path as an argument.
 
 Now create the tables to store the user's sessions:
 (Just let `connect-pg-simple` take care of it or go deeper into it's configuration [here](https://www.npmjs.com/package/connect-pg-simple) )
@@ -75,7 +89,7 @@ Now create the tables to store the user's sessions:
 ```
 
 At this point you have all the database-related steps ready for your app.
-A "users" table for to store your users and a "session" table to store your user's sessions.
+A "users" table to store your users and a "session" table to store your users' sessions.
 
 ## ⚙️ Configure Your `.env` File
 
@@ -88,19 +102,24 @@ Provide the following variables to your `.env` file:
 - `PRODUCTION_CONNECTION_STRING # The production connection string provided by your database hosting service.`
 - `SECRET # To hash your user's sessions before storing them in the 'session' database.`
 
+> [!NOTE]
+> The `.env.example` file contains an example of the structure of a connection string.
+
+> [!CAUTION] > **REMEMBER TO CHANGE THE `SECRET` ENVIRONMENT VARIABLE.**
+
 ## 🧪 Test If Everything Is Working Correctly
 
-Run the `npm run dev` command from your bash terminal.
+1. Run the `npm run dev` command from your bash terminal.
+2. Open [http://localhost:8080/](http://localhost:8080/) in your browser.
+3. Go to [http://localhost:8080/register](http://localhost:8080/register) and register a new user.
+4. Login with the credentials of the newly created user in
+   [http://localhost:8080/login](http://localhost:8080/login)
 
-Open [http://localhost:8080/](http://localhost:8080/) in your browser.
-
-Go to [http://localhost:8080/register](http://localhost:8080/register),
-create a new user, after creating it,
-you will be redirected to [http://localhost:8080/login](http://localhost:8080/login),
-log in entering your username and password.
-If everything it's working correctly,
-you should be redirected to the index page
-and able to see the following message:
+If everything is working correctly, you should be redirected to  
+the index page and able to see the following message:
 "You are logged in! Nice."
 
-## 💫 Build Your App
+> [!IMPORTANT]
+> Remember to change the directory name to your project's name.
+
+## 💫 Start Working On Your Project
