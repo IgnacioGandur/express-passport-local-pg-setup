@@ -1,4 +1,4 @@
-# Express + Passport.js Local Strategy + PostgresQL Database
+# 🏗 Express + Passport.js Local Strategy + PostgresQL Database Set Up
 
 ## 🛠️ Prerequisites
 
@@ -105,9 +105,11 @@ Provide the following variables to your `.env` file:
   your database hosting service.
 - `SECRET` To hash your user's sessions before storing them in the 'session' database.
 
-> [!NOTE]
+> [!NOTE]  
 > The `.env.example` file contains an example of the structure of a connection string.
-> [!CAUTION] > **REMEMBER TO CHANGE THE `SECRET` ENVIRONMENT VARIABLE.**
+
+> [!WARNING]  
+> **REMEMBER TO CHANGE THE `SECRET` ENVIRONMENT VARIABLE.**
 
 ## 🧪 Test If Everything Is Working Correctly
 
@@ -121,10 +123,12 @@ If everything is working correctly, you should be redirected to
 the index page and able to see the following message:
 "You are logged in! Nice."
 
-> [!IMPORTANT] > **Remember to change the following things if your are going to use this  
+> [!IMPORTANT]  
+> **Remember to change the following things if your are going to use this  
 > repo as a template:**
 >
-> - Delete the `.git` file (if present ) and create your own.
+> - Delete the `.git` file (if present) and create your own with `git init`.
 > - Change the repository name to your project's name.
+> - Replace the content of the `README.md` file with your project's description.
 
 ## 💫 Start Working On Your Project
